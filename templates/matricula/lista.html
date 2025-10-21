@@ -1,6 +1,6 @@
 {% include 'dashboard/cabecalho.html' %}
 
-<h1 class="mb-4">Lista de Turmas</h1>
+<h1 class="mb-4">Lista de Matriculas</h1>
 
 <div class="mt-3 mb-4">
     <a href="/alunos/form" class="btn btn-primary">Novo</a>
@@ -10,9 +10,9 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Semestre</th>
+            <th>Aluno</th>
             <th>Curso</th>
-            <th>Professor</th>
+            <th>Semestre</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -23,6 +23,7 @@
             <td>{{ item[1] }}</td>
             <td>{{ item[2] }}</td>
             <td>{{ item[3] }}</td>
+
             <td>
                 <a href="/alunos/editar/{{ item[0] }}" class="btn btn-primary btn-sm">Editar</a>
                 <a href="/alunos/remover/{{ item[0] }}" class="btn btn-danger btn-sm"
