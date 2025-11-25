@@ -1,13 +1,17 @@
+<<<<<<< HEAD
 from flask import Flask, render_template , request, redirect, flash
+=======
+from flask import Flask, render_template , request
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 from dao.aluno_dao import AlunoDAO
 from dao.professor_dao import ProfessorDAO
 from dao.curso_dao import CursoDAO
 from dao.turma_dao import TurmaDAO
 from dao.matricula_dao import MatriculaDAO
 
-
 app = Flask(__name__)
 app.secret_key = "Uma_chave_não_muito_confiável"
+
 
 
 @app.route('/')
@@ -19,6 +23,7 @@ def listar_aluno():
     dao = AlunoDAO()
     lista = dao.listar()
     return render_template('aluno/listar.html', lista=lista)
+<<<<<<< HEAD
 
 @app.route('/aluno/form') 
 def form_aluno():
@@ -57,12 +62,15 @@ def remover_aluno(id):
     else:
         flash(resultado["mensagem"], "danger")
     return redirect('/aluno')
+=======
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 @app.route('/professor')
 def listar_professor():
     dao = ProfessorDAO()
     lista = dao.listar()
     return render_template('professor/listar.html', lista=lista)
+<<<<<<< HEAD
 
 @app.route('/professor/form') 
 def form_professor():
@@ -95,6 +103,8 @@ def editar_professor(id):
     dao = ProfessorDAO()
     professor = dao.buscar_por_id(id)
     return render_template('professor/form.html', professor=professor)
+=======
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 #Remover Porfessor
 @app.route("/professor/remover/<int:id>")
@@ -114,6 +124,7 @@ def listar_curso():
     lista = dao.listar()
     return render_template('curso/listar.html', lista=lista)
 
+<<<<<<< HEAD
 # Formulário Novo Curso
 @app.route('/curso/form') 
 def form_curso():
@@ -160,12 +171,22 @@ def saudacao1(nome):
     return render_template('saudacao/saudacao.html', valor_recebido=nome)
 
 # Saudação com parâmetro via Query String
+=======
+@app.route('/saudacao/<nome>')
+def saudacao1(nome):
+    #grava no banco de dados nome
+    return render_template('saudacao/saudacao.html', valor_recebido=nome)
+
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 @app.route('/saudacao2/')
 def saudacao2():
     nome = request.args.get('nome')
     return render_template('saudacao/saudacao.html', valor_recebido=nome)
 
+<<<<<<< HEAD
 # Saudação com parâmetros via Formulário (método POST)
+=======
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 @app.route('/login', methods=['POST'])
 def login():
     usuario = request.form['usuario']
@@ -174,17 +195,27 @@ def login():
     dados = f"Usuário: {usuario}, Senha: {senha}, E-mail: {email}"
     return render_template('saudacao/saudacao.html', valor_recebido=dados)
 
+<<<<<<< HEAD
 # Cadastro com múltiplos campos via Formulário (método GET e POST)
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     dados = "" 
     
     if(request.method == 'POST'):
+=======
+@app.route('/cadastro', methods=['GET', 'POST'])
+def cadastro():
+    dados = "" # Crie a variável de dados vazia
+    
+    if(request.method == 'POST'):
+        # --- CORREÇÃO 1: 'name' mudado para 'nome' ---
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
         nome = request.form['nome'] 
         data_nascimento = request.form['data_nascimento']
         cpf = request.form['cpf']
         nome_mae = request.form['nome_mae']
         
+<<<<<<< HEAD
         dados = f"Cadastro Recebido: \n\n Nome: {nome}, \n Nasc: {data_nascimento}, \n CPF: {cpf}, \n Mãe: {nome_mae}"
         
         return render_template('cadastro/cadastro.html', valor_recebido=dados)
@@ -309,6 +340,20 @@ def remover_matricula(id):
     dao = MatriculaDAO()
     dao.remover(id)
     return redirect('/matricula')
+=======
+        # Agora a variável 'nome' existe e pode ser usada aqui
+        dados = f"Cadastro Recebido: \n\n Nome: {nome}, \n Nasc: {data_nascimento}, \n CPF: {cpf}, \n Mãe: {nome_mae}"
+        
+        # Envia os dados para a página de saudação ver o resultado
+        # --- CORREÇÃO DE CAMINHO ---
+        return render_template('cadastro/cadastro.html', valor_recebido=dados)
+
+    # --- CORREÇÃO 2: Adicionado o 'return' para o método GET ---
+    # Se o método não for POST, significa que é GET.
+    # Então, apenas mostre a página com o formulário de cadastro.
+    # --- CORREÇÃO DE CAMINHO ---
+    return render_template('cadastro/cadastro.html', valor_recebido=dados) # Passa 'dados' vazios
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 if __name__ == '__main__':
     app.run(debug=True)

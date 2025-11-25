@@ -3,7 +3,11 @@ from dao.db_config import get_connection
 
 class CursoDAO: 
 
+<<<<<<< HEAD
     sqlSelect = 'SELECT id, nome_curso FROM curso ORDER BY id DESC'
+=======
+    sqlSelect = 'SELECT c.id, c.nome_curso, p.disciplina, p.nome FROM turma t JOIN curso c ON t.curso_id = c.id JOIN professor p ON t.professor_id = p.id'
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 
     def listar(self):
@@ -12,6 +16,7 @@ class CursoDAO:
         cursor.execute(self.sqlSelect)
         lista = cursor.fetchall()
         conn.close()
+<<<<<<< HEAD
         return lista
     
      
@@ -51,3 +56,6 @@ class CursoDAO:
             return {"status": "erro", "mensagem": f"Erro: {str(e)}"}
         finally:
             conn.close()
+=======
+        return lista
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540

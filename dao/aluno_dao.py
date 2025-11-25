@@ -1,9 +1,15 @@
 from dao.db_config import get_connection 
 
+<<<<<<< HEAD
+=======
+
+class AlunoDAO: 
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 class AlunoDAO: 
 
     sqlSelect = 'SELECT id, nome, idade, cidade FROM aluno order by id desc'
+
 
 
     def listar(self):

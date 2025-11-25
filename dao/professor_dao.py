@@ -3,7 +3,11 @@ from dao.db_config import get_connection
 
 class ProfessorDAO: 
 
+<<<<<<< HEAD
     sqlSelect = 'SELECT id, nome, disciplina from professor order by id desc'
+=======
+    sqlSelect = 'SELECT id, nome, disciplina from professor'
+>>>>>>> 70f4be88010779fb5bbb05e41146c3575fc2d540
 
 
     def listar(self):
