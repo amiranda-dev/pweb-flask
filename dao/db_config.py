@@ -1,8 +1,8 @@
 import sqlite3
-
-DB_PATH = "banco_escola.db"
+import psycopg2
+# path / url de conexão
+DB_PATH = "postgresql://neondb_owner:npg_O5dEQGbiSjA4@ep-polished-hill-ahfdsdqk-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
 
 def get_connection():
-    conn = sqlite3.connect(DB_PATH)
-    return conn
+    return psycopg2.connect(DB_PATH)
 
